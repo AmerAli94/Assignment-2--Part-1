@@ -1,3 +1,21 @@
+// ===============================
+// PROGRAM NAME: GAME Programming (T163)
+// STUDENT ID : 101206769
+// AUTHOR     : AMER ALI MOHAMMED
+// CREATE DATE     : OCT 18, 2021
+// PURPOSE     : GAME2014_F2021_ASSIGNMENT2_Part1
+// SPECIAL NOTES:
+// ===============================
+// Change History:
+// Added player and player animation
+//==================================
+//==================================
+// Change History:
+// 
+//==================================
+
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +24,8 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [Header("Touch Input")]
     public Joystick joystick;
-
+    [Range(0.01f,1.0f)]
+    public float sensitivity;
 
     [Header("Movement")] 
     public float horizontalForce;
@@ -41,7 +60,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Move()
     {
-        float x = Input.GetAxisRaw("Horizontal")  + joystick.Horizontal;
+        float x = (Input.GetAxisRaw("Horizontal") + joystick.Horizontal) * sensitivity; ;
 
         if (isGrounded)
         {
@@ -49,7 +68,7 @@ public class PlayerBehaviour : MonoBehaviour
 
             // Keyboard Input
             
-            float y = Input.GetAxisRaw("Vertical") + joystick.Vertical;
+            float y = (Input.GetAxisRaw("Vertical") + joystick.Vertical) * sensitivity;
             float jump = Input.GetAxisRaw("Jump") + ((UIController.jumpButtonDown) ? 1.0f : 0.0f);
 
             // Check for Flip
@@ -86,6 +105,9 @@ public class PlayerBehaviour : MonoBehaviour
         {
             animatorController.SetInteger("AnimationState", (int)PlayerAnimationState.JUMP); // Jump State
             state = PlayerAnimationState.JUMP;
+            //
+           // rb.velocity = Vector2.zero;
+
 
             if (x != 0)
             {
@@ -130,10 +152,25 @@ public class PlayerBehaviour : MonoBehaviour
         {
             transform.SetParent(other.transform);
         }
+        if (other.gameObject.CompareTag("MovingPlatform"))
+        {
+            transform.SetParent(other.transform);
+            Debug.Log("Hit");
+        }
+
     }
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        transform.SetParent(null);
+       
+        if (other.gameObject.CompareTag("Platform"))
+        {
+            transform.SetParent(null);
+        }
+        if (other.gameObject.CompareTag("MovingPlatform"))
+        {
+            transform.SetParent(null);
+            Debug.Log("Left");
+        }
     }
 }

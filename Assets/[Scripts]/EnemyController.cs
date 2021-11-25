@@ -1,3 +1,20 @@
+// ===============================
+// PROGRAM NAME: GAME Programming (T163)
+// STUDENT ID : 101206769
+// AUTHOR     : AMER ALI MOHAMMED
+// CREATE DATE     : OCT 18, 2021
+// PURPOSE     : GAME2014_F2021_ASSIGNMENT2_Part1
+// SPECIAL NOTES:
+// ===============================
+// Change History:
+// Added Possum enemy comtroller
+//==================================
+//==================================
+// Change History:
+// 
+//==================================
+
+
 using System;
 using System.Collections;
 using System.Collections.Generic;

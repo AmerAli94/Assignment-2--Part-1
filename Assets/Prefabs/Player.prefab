@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 0}
+  sensitivity: 0
   horizontalForce: 10
   verticalForce: 40
   isGrounded: 0
