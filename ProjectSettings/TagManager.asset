@@ -7,6 +7,8 @@ TagManager:
   - Platform
   - MovingPlatform
   - EagleEnemy
+  - UnflipObject
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

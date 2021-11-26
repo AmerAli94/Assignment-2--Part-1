@@ -28,10 +28,14 @@ public class EnemyController : MonoBehaviour
 
     [Header("Movement")]
     public float runForce;
+    
     public Transform lookAheadPoint;
     public Transform lookInFrontPoint;
     public LayerMask groundLayerMask;
     public LayerMask wallLayerMask;
+
+
+  
 
     [Header("Animator")]
     public Animator animatorControler;

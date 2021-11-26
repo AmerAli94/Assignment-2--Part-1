@@ -11,7 +11,7 @@
 //==================================
 //==================================
 // Change History:
-// 
+// Scrapped the trajectary movement and added falling movement of bullets with time based spawning and collider based enemy transform flip
 //==================================
 
 using System.Collections;
@@ -24,38 +24,52 @@ public class EagleEnemyController : MonoBehaviour
     public float timeBwShots;
 
     [Header("Bullets")]
+    public GameObject shootingPos;
     public GameObject bullet;
-    public Transform shootingPos;
+    public float shootingRange;
     public float shootingSpeed;
+    public float shootingRate;
 
-    private bool CanShoot;
+    private Transform playerTransform;
+    private float nextShootTime;
+
 
     private void Start()
     {
-        
-        
-        CanShoot = true;
-       
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (CanShoot)
+
+
+        float distanceFromPlayer = Vector2.Distance(playerTransform.position, transform.position);
+
+        if (distanceFromPlayer < shootingRange && nextShootTime < Time.time)
         {
-            StartCoroutine(Shoot());
+            Instantiate(bullet, shootingPos.transform.position, Quaternion.identity);
+            nextShootTime = Time.time + shootingRate;
 
         }
     }
 
-    IEnumerator Shoot()
+    private void OnDrawGizmosSelected()
     {
-        CanShoot = false;
-        yield return new WaitForSeconds(timeBwShots);
-        GameObject newBullet = Instantiate(bullet, shootingPos.position, Quaternion.identity);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, shootingRange);
+    }
 
-        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootingSpeed * Time.deltaTime, 0.0f);
-        Debug.Log("Shoot");
-        CanShoot = true;
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Flip();
+        }
+    }
 
+    public void Flip()
+    {
+        transform.localScale = new Vector3(transform.localScale.x * -1.0f, transform.localScale.y, transform.localScale.z);
+    
     }
 }

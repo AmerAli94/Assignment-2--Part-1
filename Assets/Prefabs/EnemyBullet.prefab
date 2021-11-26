@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2090548837}
   m_Layer: 0
   m_Name: EnemyBullet
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,6 +120,8 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 0}
   playerLocation: {fileID: 0}
   speed: 10
+  forceX: 5
+  forceY: 2
 --- !u!50 &2090548837
 Rigidbody2D:
   serializedVersion: 4
@@ -137,7 +139,7 @@ Rigidbody2D:
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
