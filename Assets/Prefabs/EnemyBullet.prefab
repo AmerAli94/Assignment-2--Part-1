@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7890836675443191627}
   - component: {fileID: 7890836675443191630}
   - component: {fileID: 2090548837}
+  - component: {fileID: -7898713655514126627}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: EnemyBullet
@@ -117,11 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3478113124f73b840a7cf7907abfbf7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpawnPoint: {fileID: 0}
-  playerLocation: {fileID: 0}
   speed: 10
-  forceX: 5
-  forceY: 2
+  damage: 1
 --- !u!50 &2090548837
 Rigidbody2D:
   serializedVersion: 4
@@ -143,3 +141,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!58 &-7898713655514126627
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7890836675443191626}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 7.3125

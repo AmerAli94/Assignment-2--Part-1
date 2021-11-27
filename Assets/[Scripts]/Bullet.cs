@@ -23,6 +23,7 @@ public class Bullet : MonoBehaviour
     [Header("Bullet Manager")]
     GameObject bulletSpawnPoint;
     public float speed = 5.0f;
+    public int damage = 1;
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -36,6 +37,18 @@ public class Bullet : MonoBehaviour
         Destroy(this.gameObject, 2);
       
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Health player = other.GetComponent<Health>();
+
+        if(player != null)
+        {
+            player.TakeDamage(damage);
+        }
+
+        Destroy(gameObject);
     }
 
 }
