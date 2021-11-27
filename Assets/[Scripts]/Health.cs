@@ -1,3 +1,19 @@
+// PROGRAM NAME: GAME Programming (T163)
+// STUDENT ID : 101206769
+// AUTHOR     : AMER ALI MOHAMMED
+// CREATE DATE     : Nov 26, 2021
+// PURPOSE     : GAME2014_F2021_ASSIGNMENT2_Part1
+// SPECIAL NOTES:
+// ===============================
+// Change History:
+// Added player health UI and damage
+//==================================
+//==================================
+// Change History:
+// 
+//==================================
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,17 +40,17 @@ public class Health : MonoBehaviour
 
         for (int i= 0; i < lives.Length; i++)
         {
-            if(i< health)
+            if(i< health) 
             {
-                lives[i].sprite = remainingLives;
+                lives[i].sprite = remainingLives; // displaying lives when player has enough of health
            
             }
             else
             {
-                lives[i].sprite = emptyLifeSlots;
+                lives[i].sprite = emptyLifeSlots; // displaying empty slots when the player lose health
             }
 
-            if (i < numOfLives)
+            if (i < numOfLives) // enabling lives sprites in the array according to the numoflives
             {
                 lives[i].enabled = true;
             }

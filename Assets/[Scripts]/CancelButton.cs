@@ -2,12 +2,12 @@
 // PROGRAM NAME: GAME Programming (T163)
 // STUDENT ID : 101206769
 // AUTHOR     : AMER ALI MOHAMMED
-// CREATE DATE     : Nov 18, 2021
+// CREATE DATE     : Nov 26, 2021
 // PURPOSE     : GAME2014_F2021_ASSIGNMENT2_Part1
 // SPECIAL NOTES:
 // ===============================
 // Change History:
-// LOS for ground detection.
+// Added for Main Menu UI. 
 //==================================
 //==================================
 // Change History:
@@ -18,32 +18,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(PolygonCollider2D))]
-[System.Serializable]
-public class LOS : MonoBehaviour
+
+public class CancelButton : MonoBehaviour
 {
-    [Header("Detection Properties")]
-    public Collider2D collidesWith;
-    public ContactFilter2D contactFilter;
-    public List<Collider2D> colliderList;
 
-    private PolygonCollider2D LOSCollider;
-
+    public Animator animation;
+    private float WaitforcancelLoad = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
-        LOSCollider = GetComponent<PolygonCollider2D>();
+        animation.enabled = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Physics2D.GetContacts(LOSCollider, contactFilter, colliderList);
+        
+    }
+    public void OnCancelPressed()
+    {
+        animation.enabled = true;
+        animation.GetComponent<Animator>().Play("StartButton");
+        StartCoroutine(CancelGame());
+       // Debug.Log("Cancel Pressed");
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    IEnumerator CancelGame()
     {
-        collidesWith = other;
+        yield return new WaitForSeconds(WaitforcancelLoad);
+        Application.Quit();
     }
+
 }
