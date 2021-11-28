@@ -24,12 +24,11 @@ using UnityEngine.SceneManagement;
 public class CancelButton : MonoBehaviour
 {
 
-    public Animator animation;
+    public Animator animator;
     private float WaitforcancelLoad = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
-        animation.enabled = false;
 
     }
 
@@ -40,8 +39,7 @@ public class CancelButton : MonoBehaviour
     }
     public void OnCancelPressed()
     {
-        animation.enabled = true;
-        animation.GetComponent<Animator>().Play("StartButton");
+        animator.SetBool("IsActive", true);
         StartCoroutine(CancelGame());
        // Debug.Log("Cancel Pressed");
     }

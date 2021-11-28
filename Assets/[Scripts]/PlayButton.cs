@@ -24,14 +24,14 @@ using UnityEngine.SceneManagement;
 public class PlayButton : MonoBehaviour
 {
 
-    public Animator animation;
+    public Animator animator;
     private float WaitforMenuLoad = 1.0f;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        animation.enabled = false;
+       
     }
 
     // Update is called once per frame
@@ -42,8 +42,7 @@ public class PlayButton : MonoBehaviour
 
     public void OnStartPressed()
     {
-        animation.enabled = true;
-        animation.GetComponent<Animator>().Play("StartButton");
+        animator.SetBool("IsActive", true);
         StartCoroutine(LoadMenu());
         Debug.Log("Start Pressed");
     }
