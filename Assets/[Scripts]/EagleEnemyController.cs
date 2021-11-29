@@ -48,6 +48,7 @@ public class EagleEnemyController : MonoBehaviour
         if (distanceFromPlayer < shootingRange && nextShootTime < Time.time)
         {
             Instantiate(bullet, shootingPos.transform.position, Quaternion.identity);
+            AudioManager.instance.PlaySound("enemyfire");
             nextShootTime = Time.time + shootingRate;
 
         }

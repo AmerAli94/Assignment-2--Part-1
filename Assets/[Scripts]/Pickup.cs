@@ -10,7 +10,7 @@
 //==================================
 //==================================
 // Change History:
-// 
+// Added score
 //==================================
 
 
@@ -33,8 +33,11 @@ public class Pickup : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            ScoreManager.instance.AddPoint(); 
-            Debug.Log("Pick up");
+            //adding a point to the score.
+            ScoreManager.instance.AddPoint();
+            AudioManager.instance.PlaySound("pickup");
+            //Debug.Log("Pick up");
+            Destroy(gameObject);
         }
     }
 }

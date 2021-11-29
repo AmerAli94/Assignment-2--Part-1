@@ -106,7 +106,8 @@ public class PlayerBehaviour : MonoBehaviour
             animatorController.SetInteger("AnimationState", (int)PlayerAnimationState.JUMP); // Jump State
             state = PlayerAnimationState.JUMP;
             //
-           // rb.velocity = Vector2.zero;
+            // rb.velocity = Vector2.zero;
+           
 
 
             if (x != 0)
@@ -126,6 +127,8 @@ public class PlayerBehaviour : MonoBehaviour
         RaycastHit2D hit = Physics2D.CircleCast(groundOrigin.position, groundRadius, Vector2.down, groundRadius, groundLayerMask);
 
         isGrounded = (hit) ? true : false;
+
+
     }
 
     private float FlipAnimation(float x)
@@ -151,10 +154,14 @@ public class PlayerBehaviour : MonoBehaviour
         if(other.gameObject.CompareTag("Platform"))
         {
             transform.SetParent(other.transform);
+            AudioManager.instance.PlaySound("landing");
+           
+
         }
         if (other.gameObject.CompareTag("MovingPlatform"))
         {
             transform.SetParent(other.transform);
+            AudioManager.instance.PlaySound("landing");
             Debug.Log("Hit");
         }
 
@@ -166,10 +173,12 @@ public class PlayerBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Platform"))
         {
             transform.SetParent(null);
+            AudioManager.instance.PlaySound("jump");
         }
         if (other.gameObject.CompareTag("MovingPlatform"))
         {
             transform.SetParent(null);
+            AudioManager.instance.PlaySound("jump");
             Debug.Log("Left");
         }
     }

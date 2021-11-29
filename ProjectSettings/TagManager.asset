@@ -9,6 +9,7 @@ TagManager:
   - EagleEnemy
   - UnflipObject
   - EnemyBullet
+  - Explosion
   layers:
   - Default
   - TransparentFX

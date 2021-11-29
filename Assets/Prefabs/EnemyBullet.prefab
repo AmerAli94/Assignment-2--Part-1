@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7890836675443191624}
   - component: {fileID: 7890836675443191627}
   - component: {fileID: 7890836675443191630}
-  - component: {fileID: 2090548837}
   - component: {fileID: -7898713655514126627}
+  - component: {fileID: -383195744567792590}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: EnemyBullet
@@ -118,29 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3478113124f73b840a7cf7907abfbf7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 3211479714132598561, guid: 2c5eb42e8d3383946b5dd9973e5d3e54, type: 3}
   speed: 10
   damage: 1
---- !u!50 &2090548837
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7890836675443191626}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
 --- !u!58 &-7898713655514126627
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -154,6 +134,27 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.1080513, y: 0}
   serializedVersion: 2
-  m_Radius: 7.3125
+  m_Radius: 5.3315544
+--- !u!50 &-383195744567792590
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7890836675443191626}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0

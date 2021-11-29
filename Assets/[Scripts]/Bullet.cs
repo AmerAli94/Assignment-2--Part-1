@@ -2,7 +2,7 @@
 // PROGRAM NAME: GAME Programming (T163)
 // STUDENT ID : 101206769
 // AUTHOR     : AMER ALI MOHAMMED
-// CREATE DATE     : OCT 18, 2021
+// CREATE DATE     : Nov 25, 2021
 // PURPOSE     : GAME2014_F2021_ASSIGNMENT2_Part1
 // SPECIAL NOTES:
 // ===============================
@@ -13,6 +13,10 @@
 // Change History:
 // Added player location as target for the bullet to move to after spawning
 //==================================
+// Change History:
+// Added Explosions to the bullet.
+//==================================
+
 
 using System.Collections;
 using System.Collections.Generic;
@@ -22,9 +26,14 @@ public class Bullet : MonoBehaviour
 {
     [Header("Bullet Manager")]
     GameObject bulletSpawnPoint;
+    public GameObject explosion;
     public float speed = 5.0f;
     public int damage = 1;
     private Rigidbody2D rb;
+    private float waitforExplosionAnim = 0.25f;
+    private float waitforBulletDestruction = 0.5f;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,23 +41,42 @@ public class Bullet : MonoBehaviour
         //only one check in start so the bullet doesn't keep following the player.
         rb = GetComponent<Rigidbody2D>();
         bulletSpawnPoint = GameObject.FindGameObjectWithTag("Player");
+       // explosion = GameObject.FindGameObjectWithTag("Explosion");
         Vector2 moveDir = (bulletSpawnPoint.transform.position - transform.position).normalized * speed;
-        rb.velocity = new Vector2(moveDir.x, moveDir.y);
-        Destroy(this.gameObject, 2);
-      
+        rb.velocity = new Vector2(moveDir.x, moveDir.y);      
 
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         Health player = other.GetComponent<Health>();
-
-        if(player != null)
+        rb.velocity = new Vector2(0, 0);
+        if (player != null)
         {
             player.TakeDamage(damage);
         }
+        //Playing the sound when the bullet is not hitting the player.
+        AudioManager.instance.PlaySound("firemiss");
 
-        Destroy(gameObject);
+        // Instantiating as a variable so that I can destroy it later. Hard learned lesson
+        GameObject platformHittingExplosions = Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(platformHittingExplosions, 0.3f);
+
+        if (other.gameObject.CompareTag("Player"))
+        {
+            //Playing the sound when the bullet is hitting the player.
+            AudioManager.instance.PlaySound("playerhit");
+
+           GameObject explosionEffect =  Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(explosionEffect, 0.4f);
+
+        }
+        Destroy(this.gameObject, 0.3f);
+
+
     }
+
+
+
 
 }
