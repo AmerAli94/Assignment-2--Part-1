@@ -29,6 +29,7 @@ public class GameContoller : MonoBehaviour
     void Start()
     {
         player.position = playerSpawnPoint.position;
+        Time.timeScale = 1.0f;
     }
     
 }

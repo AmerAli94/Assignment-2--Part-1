@@ -31,7 +31,7 @@ public class PlayButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        Time.timeScale = 1.0f; // so that after dying when we reload level the level is not paused
     }
 
     // Update is called once per frame

@@ -34,18 +34,21 @@ public class MovingPlatformController : MonoBehaviour
     public float distanceOffset;
     public bool isLooping;
 
+    private Rigidbody2D rb;
     private Vector2 startingPosition;
     private bool isMoving;
 
     // Start is called before the first frame update
     public void Start()
     {
+        
+        rb = GetComponent<Rigidbody2D>();
         startingPosition = transform.position;
         isMoving = true;
     }
 
     // Update is called once per frame
-    void Update()
+   public void Update()
     {
         MovePlatform();
 
@@ -69,10 +72,13 @@ public class MovingPlatformController : MonoBehaviour
         switch (direction)
         {
             case MovingPlatformDirection.HORIZONTAL:
-                transform.position = new Vector2(startingPosition.x + pingPongValue, transform.position.y);
+                Vector2 moveHorizontal = new Vector2(startingPosition.x + pingPongValue, transform.position.y);
+                rb.MovePosition(moveHorizontal); //moving using rigidbody because of weird jittery issues/ still have it with vertical movement
                 break;
             case MovingPlatformDirection.VERTICAL:
-                transform.position = new Vector2(transform.position.x, startingPosition.y + pingPongValue);
+                Vector2 moveVertical = transform.position = new Vector2(transform.position.x, startingPosition.y + pingPongValue);
+                rb.MovePosition(moveVertical);
+
                 break;
             case MovingPlatformDirection.DIAGONAL_UP:
                 transform.position = new Vector2(startingPosition.x + pingPongValue, startingPosition.y + pingPongValue);
@@ -83,5 +89,24 @@ public class MovingPlatformController : MonoBehaviour
         }
     }
 
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            // transform.SetParent(other.transform);
+            other.transform.parent = transform;
+            AudioManager.instance.PlaySound("landing");
 
+        }
+    }
+
+    public void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player") )
+        {
+            // transform.SetParent(null);
+            other.transform.parent = null;
+            AudioManager.instance.PlaySound("jump");
+        }
+    }
 }

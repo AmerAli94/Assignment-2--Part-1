@@ -49,12 +49,19 @@ public class PlayerBehaviour : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animatorController = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+
+    private void Update()
     {
         Move();
+        Debug.Log(verticalForce);
+
+    }
+    void FixedUpdate()
+    {
         CheckIfGrounded();
     }
 
@@ -100,6 +107,7 @@ public class PlayerBehaviour : MonoBehaviour
 
             rb.AddForce(new Vector2(horizontalMoveForce, jumpMoveForce) * mass);
             rb.velocity *= 0.99f; // scaling / stopping hack
+
         }
         else // Air Control
         {
@@ -151,35 +159,24 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Platform"))
+        if (other.gameObject.CompareTag("Platform") || other.gameObject.CompareTag("MovingPlatform"))
         {
             transform.SetParent(other.transform);
+
             AudioManager.instance.PlaySound("landing");
-           
 
         }
-        if (other.gameObject.CompareTag("MovingPlatform"))
-        {
-            transform.SetParent(other.transform);
-            AudioManager.instance.PlaySound("landing");
-            Debug.Log("Hit");
-        }
+
 
     }
 
     private void OnCollisionExit2D(Collision2D other)
     {
-       
-        if (other.gameObject.CompareTag("Platform"))
+
+        if (other.gameObject.CompareTag("Platform") || other.gameObject.CompareTag("MovingPlatform"))
         {
             transform.SetParent(null);
             AudioManager.instance.PlaySound("jump");
-        }
-        if (other.gameObject.CompareTag("MovingPlatform"))
-        {
-            transform.SetParent(null);
-            AudioManager.instance.PlaySound("jump");
-            Debug.Log("Left");
         }
     }
 

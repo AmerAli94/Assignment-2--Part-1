@@ -26,5 +26,6 @@ public enum PlayerAnimationState
    IDLE,
    RUN,
    JUMP,
+   DEATH,
    NYM_OF_ANIMATION_STATE
 }

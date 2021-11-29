@@ -10,7 +10,7 @@
 //==================================
 //==================================
 // Change History:
-// 
+// Added Death Sceen
 //==================================
 
 
@@ -23,12 +23,18 @@ public class Health : MonoBehaviour
 {
     public int health;
     public int numOfLives;
-
+    public Animator playerDeathAnnim;
     public Image[] lives;
     public Sprite remainingLives;
     public Sprite emptyLifeSlots;
+    public GameObject deathCanvas;
 
+    void Start()
+    {
+        playerDeathAnnim.GetComponent<Animator>();
+        deathCanvas.GetComponent<GameObject>();
 
+    }
 
     // Update is called once per frame
     void Update()
@@ -67,6 +73,10 @@ public class Health : MonoBehaviour
         if(health <= 0)
         {
             Debug.Log("Game over");
+            playerDeathAnnim.SetBool("IsDeathActive", true);
+            deathCanvas.SetActive(true);
+            Time.timeScale = 0.0f;
+            
         }
     }
 }
