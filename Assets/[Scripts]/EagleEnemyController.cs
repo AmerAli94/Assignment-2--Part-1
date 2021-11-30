@@ -37,6 +37,7 @@ public class EagleEnemyController : MonoBehaviour
     private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+       
     }
 
     private void FixedUpdate()
@@ -72,5 +73,11 @@ public class EagleEnemyController : MonoBehaviour
     {
         transform.localScale = new Vector3(transform.localScale.x * -1.0f, transform.localScale.y, transform.localScale.z);
     
+    }
+
+    public void UnFlip()
+    {
+        transform.localScale = new Vector3(transform.localScale.x * -1.0f, transform.localScale.y, transform.localScale.z);
+
     }
 }

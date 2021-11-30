@@ -22,12 +22,21 @@ using UnityEngine;
 public class DeathPlaneController : MonoBehaviour
 {
     public Transform playerSpawnPoint;
+    public EagleEnemyController eagleFlip;
+
+    private void Start()
+    {
+    }
+
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             other.transform.position = playerSpawnPoint.position;
+            //eagleFlip = gameObject.GetComponent<GameObject>();
+            eagleFlip.Flip();
+
         }
         else
         {
