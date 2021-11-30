@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "emulator-5554",
+    "m_SelectedDeviceId": "RFCN80FPFDA",
     "m_SelectedPackage": {
-        "deviceId": "emulator-5554",
+        "deviceId": "RFCN80FPFDA",
         "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
-        "processId": 3707,
+        "processId": 22361,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -24,6 +24,36 @@
             "deviceId": "emulator-5554",
             "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
             "processId": 3707,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCN80FPFDA",
+            "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
+            "processId": 11345,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCN80FPFDA",
+            "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
+            "processId": 12048,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCN80FPFDA",
+            "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
+            "processId": 19937,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCN80FPFDA",
+            "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
+            "processId": 20145,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCN80FPFDA",
+            "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
+            "processId": 22361,
             "exited": false
         }
     ],

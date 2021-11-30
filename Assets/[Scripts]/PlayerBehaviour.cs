@@ -56,12 +56,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Update()
     {
-        Move();
-        Debug.Log(verticalForce);
+        
+       // Debug.Log(verticalForce);
 
     }
     void FixedUpdate()
     {
+        Move();
         CheckIfGrounded();
     }
 
