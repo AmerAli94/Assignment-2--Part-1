@@ -61,12 +61,17 @@ public class InstructionsManager : MonoBehaviour
         firstInstructionBox.SetActive(true);
     }
 
+    public void OnInstructionBoxCancelPress()
+    {
+        instructionsBoxAnimator.SetBool("IsOpenActive", false);
+        instructionsBoxAnimator.SetBool("IsCloseActive", true);
+    }
+
     //using coroutines to deactvate the bools for reuse or button represses
     IEnumerator ChangeAnimatorBool()
     {
         yield return new WaitForSeconds(waitForAnimBool);
         animator.SetBool("IsActive", false);
-        instructionsBoxAnimator.SetBool("IsOpenActive", false);
     }
 
 

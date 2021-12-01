@@ -11,7 +11,7 @@
 //==================================
 //==================================
 // Change History:
-// 
+// Make the eagle flip in right direction.
 //==================================
 
 
@@ -26,6 +26,7 @@ public class DeathPlaneController : MonoBehaviour
 
     private void Start()
     {
+        eagleFlip.unflip();
     }
 
 
@@ -34,9 +35,8 @@ public class DeathPlaneController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             other.transform.position = playerSpawnPoint.position;
-            //eagleFlip = gameObject.GetComponent<GameObject>();
             eagleFlip.Flip();
-
+         
         }
         else
         {

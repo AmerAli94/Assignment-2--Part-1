@@ -30,8 +30,7 @@ public class Bullet : MonoBehaviour
     public float speed = 5.0f;
     public int damage = 1;
     private Rigidbody2D rb;
-    private float waitforExplosionAnim = 0.25f;
-    private float waitforBulletDestruction = 0.5f;
+
 
 
 
@@ -41,7 +40,6 @@ public class Bullet : MonoBehaviour
         //only one check in start so the bullet doesn't keep following the player.
         rb = GetComponent<Rigidbody2D>();
         bulletSpawnPoint = GameObject.FindGameObjectWithTag("Player");
-       // explosion = GameObject.FindGameObjectWithTag("Explosion");
         Vector2 moveDir = (bulletSpawnPoint.transform.position - transform.position).normalized * speed;
         rb.velocity = new Vector2(moveDir.x, moveDir.y);      
 

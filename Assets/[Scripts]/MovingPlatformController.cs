@@ -81,7 +81,10 @@ public class MovingPlatformController : MonoBehaviour
 
                 break;
             case MovingPlatformDirection.DIAGONAL_UP:
-                transform.position = new Vector2(startingPosition.x + pingPongValue, startingPosition.y + pingPongValue);
+                //transform.position = new Vector2();
+                Vector2 moveDiagonalUp = transform.position = new Vector2(startingPosition.x + pingPongValue, startingPosition.y + pingPongValue);
+                rb.MovePosition(moveDiagonalUp);
+
                 break;
             case MovingPlatformDirection.DIAGONAL_DOWN:
                 transform.position = new Vector2(startingPosition.x - pingPongValue, startingPosition.y - pingPongValue);

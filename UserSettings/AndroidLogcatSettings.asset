@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "RFCN80FPFDA",
         "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
-        "processId": 25059,
+        "processId": 12368,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -66,6 +66,18 @@
             "deviceId": "RFCN80FPFDA",
             "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
             "processId": 25059,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCN80FPFDA",
+            "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
+            "processId": 8465,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCN80FPFDA",
+            "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
+            "processId": 12368,
             "exited": false
         }
     ],

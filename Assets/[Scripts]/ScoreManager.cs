@@ -23,9 +23,12 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    public Text scoreText;
+    public Text starsText;
+    public Text remainingStarsText;
 
-    int score = 0;
+    int stars = 0;
+    [Range(1,6)]
+    public int totalStars = 6;
 
     private void Awake()
     {
@@ -35,12 +38,27 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoreText.text = "SCORE : " + score.ToString(); 
+        starsText.text = "- " + stars.ToString();
+        remainingStarsText.text = " " + totalStars.ToString();
     }
 
     public void AddPoint() // will be called by pickup script
     {
-        score += 1;
-        scoreText.text = "SCORE : " + score.ToString();
+        stars += 1;
+        totalStars -= 1;
+        starsText.text = "- " + stars.ToString();
+        remainingStarsText.text = " " + totalStars.ToString();
     }
+
+    public void Update()
+    {
+        if(totalStars <=  0)
+        {
+            Debug.Log("You Won");
+        }
+        //storing score
+        PlayerPrefs.SetInt("Collected Stars", stars);
+
+    }
+
 }
