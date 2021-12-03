@@ -10,6 +10,8 @@ TagManager:
   - UnflipObject
   - EnemyBullet
   - Explosion
+  - WinScreen
+  - Enemy
   layers:
   - Default
   - TransparentFX

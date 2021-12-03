@@ -24,7 +24,6 @@ public class DeathPanel : MonoBehaviour
         int collectedStars = PlayerPrefs.GetInt("Collected Stars");
         score = collectedStars;
         starScore.text = "- " + score.ToString();
-        Debug.Log(starScore.text);
     }
     public void OnReplayPressed()
     {

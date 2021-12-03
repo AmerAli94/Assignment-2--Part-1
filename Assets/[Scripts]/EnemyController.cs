@@ -34,8 +34,10 @@ public class EnemyController : MonoBehaviour
     public LayerMask groundLayerMask;
     public LayerMask wallLayerMask;
 
+    //BoxCollider2D boxCollider;
+    //private int damage = 1;
 
-  
+
 
     [Header("Animator")]
     public Animator animatorControler;
@@ -52,6 +54,7 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         enemyLOS = GetComponent<LOS>();
         animatorControler = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -59,17 +62,19 @@ public class EnemyController : MonoBehaviour
     {
         LookAhead();
         LookInFrontPoint();
+        MoveEnemy();
 
         if (!HasLOS())
         {
             animatorControler.enabled = true;
             animatorControler.Play("Run");
-            MoveEnemy();
+
+
         }
 
         else 
         {
-            animatorControler.enabled = false;
+            //animatorControler.enabled = false;;
         }
     }
 
@@ -146,6 +151,14 @@ public class EnemyController : MonoBehaviour
         {
             transform.SetParent(other.transform);
         }
+
+     
+        if (other.gameObject.CompareTag("Player"))
+        {
+            animatorControler.enabled = false;
+        
+
+        }
     }
 
     private void OnCollisionExit2D(Collision2D other)
@@ -154,6 +167,8 @@ public class EnemyController : MonoBehaviour
         {
             transform.SetParent(null);
         }
+
+
     }
 
     //Utilities

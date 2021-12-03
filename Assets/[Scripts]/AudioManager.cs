@@ -23,13 +23,24 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance; // singleton based audio manager
 
     //Sounds
-    public AudioClip jump, landing, firing, damage, pickup , firemiss;
+    public AudioClip jump, landing, firing, damage, pickup , firemiss, enemyHit;
+    public AudioSource bGM, winMusic, GameOver;
 
     public GameObject soundObject;
+
+    public bool isLevelBGMPlaying = true;
+    public bool iswinMusicPlaying = false;
+    public bool isGameOverPlaying = false;
 
     void Awake()
     {
         instance = this;
+        
+    }
+
+    private void Start()
+    {
+        bGM.Play();
     }
 
     public void PlaySound(string soundName)
@@ -54,6 +65,9 @@ public class AudioManager : MonoBehaviour
             case "firemiss":
                 CreateSoundObject(firemiss);
                 break;
+            case "enemyHit":
+                CreateSoundObject(enemyHit);
+                break;
 
 
         }
@@ -72,5 +86,44 @@ public class AudioManager : MonoBehaviour
 
         newObject.GetComponent<AudioSource>().Play();
 
+    }
+
+    public void PlayLevelBGM()
+    {
+        isLevelBGMPlaying = true;
+        iswinMusicPlaying = false;
+        isGameOverPlaying = false;
+        
+        bGM.Play();
+    }
+
+    public void PlayWinMusic()
+    {
+        if (bGM.isPlaying)
+            isLevelBGMPlaying = false;
+        {
+            bGM.Stop();
+        }
+
+        if (!winMusic.isPlaying && iswinMusicPlaying == false)
+        {
+            winMusic.Play();
+            iswinMusicPlaying = true;
+        }
+    }
+
+    public void PlayGameOverMusic()
+    {
+        if (bGM.isPlaying)
+            isLevelBGMPlaying = false;
+        {
+            bGM.Stop();
+        }
+
+        if (!winMusic.isPlaying && iswinMusicPlaying == false)
+        {
+            GameOver.Play();
+            isGameOverPlaying = true;
+        }
     }
 }

@@ -18,6 +18,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 
 public class ScoreManager : MonoBehaviour
@@ -25,14 +27,16 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
     public Text starsText;
     public Text remainingStarsText;
+    public GameObject WinPanel;
 
     int stars = 0;
-    [Range(1,6)]
-    public int totalStars = 6;
+    [Range(1, 7)]
+    public int totalStars = 7;
 
     private void Awake()
     {
         instance = this;
+        WinPanel.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -54,11 +58,22 @@ public class ScoreManager : MonoBehaviour
     {
         if(totalStars <=  0)
         {
-            Debug.Log("You Won");
+            //Time.timeScale = 0.0f;
+            WinPanel.SetActive(true);
+            FindObjectOfType<AudioManager>().PlayWinMusic();
+            FindObjectOfType<EagleEnemyController>().StopShooting(); //make eagle stop shooting. Not working for now.
+            //Debug.Log("You Won");
+            StartCoroutine(openMenu());
         }
         //storing score
         PlayerPrefs.SetInt("Collected Stars", stars);
 
+    }
+
+    IEnumerator openMenu()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("Menu");
     }
 
 }

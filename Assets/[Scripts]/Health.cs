@@ -27,12 +27,12 @@ public class Health : MonoBehaviour
     public Image[] lives;
     public Sprite remainingLives;
     public Sprite emptyLifeSlots;
-    public GameObject deathCanvas;
+    public GameObject deathPanel;
 
     void Start()
     {
         playerDeathAnnim.GetComponent<Animator>();
-        deathCanvas.GetComponent<GameObject>();
+        deathPanel.GetComponent<GameObject>();
 
     }
 
@@ -74,7 +74,9 @@ public class Health : MonoBehaviour
         {
             Debug.Log("Game over");
             playerDeathAnnim.SetBool("IsDeathActive", true);
-            deathCanvas.SetActive(true);
+            FindObjectOfType<AudioManager>().PlayGameOverMusic();
+            FindObjectOfType<EagleEnemyController>().StopShooting();
+            deathPanel.SetActive(true);
             Time.timeScale = 0.0f;
             
         }

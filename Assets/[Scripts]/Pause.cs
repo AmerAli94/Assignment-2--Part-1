@@ -62,5 +62,10 @@ public class Pause : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void OnRetryPressed()
+    {
+        SceneManager.LoadScene("Main");
+    }
+
 
 }

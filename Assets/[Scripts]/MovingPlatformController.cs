@@ -92,24 +92,26 @@ public class MovingPlatformController : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            // transform.SetParent(other.transform);
-            other.transform.parent = transform;
-            AudioManager.instance.PlaySound("landing");
+    //public void OnCollisionEnter2D(Collision2D other)
+    //{
+    //    if (other.gameObject.CompareTag("Player"))
+    //    {
+    //        // transform.SetParent(other.transform);
+    //        other.transform.parent = transform;
+    //        //rb.velocity = other.relativeVelocity;
+    //        other.rigidbody.velocity = rb.velocity;
+    //        AudioManager.instance.PlaySound("landing");
 
-        }
-    }
+    //    }
+    //}
 
-    public void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Player") )
-        {
-            // transform.SetParent(null);
-            other.transform.parent = null;
-            AudioManager.instance.PlaySound("jump");
-        }
-    }
+    //public void OnCollisionExit2D(Collision2D other)
+    //{
+    //    if (other.gameObject.CompareTag("Player") )
+    //    {
+    //        // transform.SetParent(null);
+    //        other.transform.parent = null;
+    //        AudioManager.instance.PlaySound("jump");
+    //    }
+    //}
 }

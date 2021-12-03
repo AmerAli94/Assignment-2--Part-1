@@ -41,6 +41,9 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Animation")]
     public PlayerAnimationState state;
 
+
+    private int damage = 1;
+
     private Rigidbody2D rb;
     private Animator animatorController;
 
@@ -167,6 +170,16 @@ public class PlayerBehaviour : MonoBehaviour
             AudioManager.instance.PlaySound("landing");
 
         }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Health player = GetComponent<Health>();
+            // rb.velocity = new Vector2(0, 0);
+            AudioManager.instance.PlaySound("enemyHit");
+            player.TakeDamage(damage);
+            Debug.Log("collided");
+        }
+
 
 
     }

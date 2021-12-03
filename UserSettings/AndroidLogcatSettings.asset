@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "RFCN80FPFDA",
     "m_SelectedPackage": {
-        "deviceId": "RFCN80FPFDA",
-        "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
-        "processId": 12368,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -29,55 +29,37 @@
         {
             "deviceId": "RFCN80FPFDA",
             "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
-            "processId": 11345,
-            "exited": false
+            "processId": 8521,
+            "exited": true
         },
         {
             "deviceId": "RFCN80FPFDA",
             "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
-            "processId": 12048,
-            "exited": false
+            "processId": 9168,
+            "exited": true
         },
         {
             "deviceId": "RFCN80FPFDA",
             "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
-            "processId": 19937,
-            "exited": false
+            "processId": 15221,
+            "exited": true
         },
         {
             "deviceId": "RFCN80FPFDA",
             "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
-            "processId": 20145,
-            "exited": false
+            "processId": 30428,
+            "exited": true
         },
         {
             "deviceId": "RFCN80FPFDA",
             "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
-            "processId": 22361,
-            "exited": false
+            "processId": 11945,
+            "exited": true
         },
         {
             "deviceId": "RFCN80FPFDA",
             "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
-            "processId": 16258,
-            "exited": false
-        },
-        {
-            "deviceId": "RFCN80FPFDA",
-            "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
-            "processId": 25059,
-            "exited": false
-        },
-        {
-            "deviceId": "RFCN80FPFDA",
-            "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
-            "processId": 8465,
-            "exited": false
-        },
-        {
-            "deviceId": "RFCN80FPFDA",
-            "name": "ca.AmerAliMohammed.GAME2014F2021Assignment2Part1",
-            "processId": 12368,
+            "processId": 16858,
             "exited": false
         }
     ],

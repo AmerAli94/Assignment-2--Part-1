@@ -18,7 +18,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[System.Serializable]
 public class EagleEnemyController : MonoBehaviour
 {
     public float timeBwShots;
@@ -32,27 +32,30 @@ public class EagleEnemyController : MonoBehaviour
 
     private Transform playerTransform;
     private float nextShootTime;
+    private bool isShooting;
 
-
+ 
     private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-       
+        unflip(); // makes sure enemy facing right direction upon repawn
+
+        isShooting = true;
     }
 
-    private void FixedUpdate()
+    public void Update()
     {
-
-
-        float distanceFromPlayer = Vector2.Distance(playerTransform.position, transform.position);
-
-        if (distanceFromPlayer < shootingRange && nextShootTime < Time.time)
+     
+        if (isShooting)
         {
-            Instantiate(bullet, shootingPos.transform.position, Quaternion.identity);
-            AudioManager.instance.PlaySound("enemyfire");
-            nextShootTime = Time.time + shootingRate;
+            Shoot();
 
         }
+        else
+        {
+            StopShooting();
+        }
+
     }
 
     private void OnDrawGizmosSelected()
@@ -68,6 +71,34 @@ public class EagleEnemyController : MonoBehaviour
             Flip();
         }
     }
+
+    public void Shoot()
+    {
+      //  isShooting = true;
+        float distanceFromPlayer = Vector2.Distance(playerTransform.position, transform.position);
+
+        if (distanceFromPlayer < shootingRange && nextShootTime < Time.time)
+        {
+            GameObject shoot = Instantiate(bullet, shootingPos.transform.position, Quaternion.identity);
+            AudioManager.instance.PlaySound("enemyfire");
+            nextShootTime = Time.time + shootingRate;
+            //isShooting = false;
+
+            Destroy(shoot, 5);
+        }
+
+    }
+
+    public void StopShooting()
+    {
+        timeBwShots = 10.0f;
+        if(isShooting)
+        isShooting = false; // gets called in win state so that the enemies don't keep on shooting when the win screen anim is played
+
+    }
+
+
+
 
     public void Flip()
     {

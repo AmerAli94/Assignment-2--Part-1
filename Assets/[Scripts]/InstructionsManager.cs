@@ -23,8 +23,11 @@ public class InstructionsManager : MonoBehaviour
     
     public Animator instructionsBoxAnimator;
     public Animator animator;
+
+    [Header("InstructionBoxes")]
     public GameObject firstInstructionBox;
     public GameObject secondInstructionBox;
+    public GameObject thirdInstructionsBox;
 
     private float waitForAnimBool = 2.0f;
 
@@ -35,7 +38,10 @@ public class InstructionsManager : MonoBehaviour
         //Using bools as parameters to activate the animations
         instructionsBoxAnimator.SetBool("IsOpenActive", false);
         animator.SetBool("IsActive", false);
-        Debug.Log(instructionsBoxAnimator);
+        firstInstructionBox.SetActive(true);
+        secondInstructionBox.SetActive(false);
+        thirdInstructionsBox.SetActive(false);
+        //Debug.Log(instructionsBoxAnimator);
     }
 
 
@@ -45,20 +51,43 @@ public class InstructionsManager : MonoBehaviour
         instructionsBoxAnimator.SetBool("IsOpenActive", true);
         instructionsBoxAnimator.SetBool("IsCloseActive", false);
         animator.SetBool("IsActive", true);
+        firstInstructionBox.SetActive(true);
+        secondInstructionBox.SetActive(false);
+        thirdInstructionsBox.SetActive(false);
+
         StartCoroutine(ChangeAnimatorBool());
     }
 
-    public void OnFirstInstructionsCloseButtonPress()
+    public void OnFirstInstructionsBoxNextPressed()
     {
         //using set active for gameobjects to hide & show Instructions screens/panels
         firstInstructionBox.SetActive(false);
-        secondInstructionBox.SetActive(true);
+        secondInstructionBox.SetActive(true); // activate only 2nd box
+        thirdInstructionsBox.SetActive(false);
     }
 
-    public void OnPrevButtonPres()
+    public void OnSecInstructionsBoxPrevButtonPres()
     {
         secondInstructionBox.SetActive(false);
-        firstInstructionBox.SetActive(true);
+        firstInstructionBox.SetActive(true); // activate only 1st box
+        thirdInstructionsBox.SetActive(false);
+
+    }
+
+    public void OnSecInstructionsBoxNextButtonPres()
+    {
+        secondInstructionBox.SetActive(false);
+        firstInstructionBox.SetActive(false); 
+        thirdInstructionsBox.SetActive(true); // activate only 3rd box
+
+    }
+
+    public void OnThirdInstructionsBoxPrevButtonPres()
+    {
+        secondInstructionBox.SetActive(true); // activate only 2nd box
+        firstInstructionBox.SetActive(false); 
+        thirdInstructionsBox.SetActive(false);
+
     }
 
     public void OnInstructionBoxCancelPress()
